@@ -1,58 +1,74 @@
-# 01 — 4-bit ALU
+# Verilog Projects
 
-A 4-bit Arithmetic Logic Unit (ALU) implemented in Verilog.  
-Supports 8 operations with carry, overflow, zero, and negative flags.
+A progressive collection of digital design projects implemented in Verilog HDL —
+starting from foundational building blocks and working up to a simple CPU.
 
-## Operations
+Each project includes a synthesizable module, a testbench with full test coverage,
+simulation waveforms, and step-by-step instructions to run locally.
 
-| `op` | Operation | Description          |
-|------|-----------|----------------------|
-| 000  | ADD       | A + B                |
-| 001  | SUB       | A − B                |
-| 010  | AND       | A & B                |
-| 011  | OR        | A \| B               |
-| 100  | XOR       | A ^ B                |
-| 101  | NOT       | ~A (B ignored)       |
-| 110  | SHL       | A << 1 (logical)     |
-| 111  | SHR       | A >> 1 (logical)     |
+---
 
-## Flags
+## Projects
 
-| Flag       | Condition                              |
-|------------|----------------------------------------|
-| `zero`     | Result is `0000`                       |
-| `carry`    | Carry/borrow out (ADD/SUB), shifted bit (SHL/SHR) |
-| `overflow` | Signed overflow (ADD/SUB only)         |
-| `negative` | MSB of result is `1`                   |
+| # | Project | Description | Status |
+|---|---------|-------------|--------|
+| 01 | [4-bit ALU](./01_alu) | Arithmetic Logic Unit — ADD, SUB, AND, OR, XOR, NOT, SHL, SHR with flags | ✅ Complete |
+| 02 | Register File | 8x4-bit register file with read/write ports | 🔜 Coming soon |
+| 03 | UART | Serial transmitter/receiver with configurable baud rate | 🔜 Coming soon |
+| 04 | Simple CPU | 8-bit fetch-decode-execute pipeline | 🔜 Coming soon |
 
-## File Structure
+---
 
-```
-01_alu/
-├── src/
-│   └── alu.v          # ALU module
-├── tb/
-│   └── alu_tb.v       # Testbench
-├── sim/               # Generated: compiled binary + .vcd waveform
-├── Makefile
-└── README.md
-```
+## Tools
 
-## Simulate
+| Tool | Purpose |
+|------|---------|
+| [Icarus Verilog](http://iverilog.icarus.com/) | Simulation (`iverilog` + `vvp`) |
+| [GTKWave](http://gtkwave.sourceforge.net/) | Waveform viewer |
+| Verilog HDL (IEEE 1364-2001) | Hardware description language |
 
+---
+
+## Getting Started
+
+**Install dependencies:**
 ```bash
-make sim      # compile + run testbench (prints PASS/FAIL for each case)
-make wave     # open waveform in GTKWave
-make clean    # remove sim/ artifacts
+# Ubuntu / WSL
+sudo apt install iverilog gtkwave
+
+# macOS
+brew install icarus-verilog gtkwave
 ```
 
-## Block Diagram
+**Run any project:**
+```bash
+cd 01_alu
+make sim     # compile and simulate — prints PASS/FAIL for each test
+make wave    # open waveform in GTKWave
+make clean   # remove build artifacts
+```
+
+---
+
+## Repo Structure
 
 ```
-        A[3:0] ──┐
-                  ├──► [ ALU ] ──► result[3:0]
-        B[3:0] ──┤              ──► zero
-                  │              ──► carry
-        op[2:0] ─┘              ──► overflow
-                                 ──► negative
+verilog-projects/
+├── 01_alu/
+│   ├── src/        # Verilog source modules
+│   ├── tb/         # Testbenches
+│   ├── sim/        # Generated simulation outputs
+│   ├── docs/       # Waveform screenshots and simulation logs
+│   ├── Makefile
+│   └── README.md
+└── README.md       # This file
 ```
+
+---
+
+## About
+
+This repo documents my journey learning digital design from the ground up.
+Projects are added progressively — each one builds on the concepts of the last.
+
+**Topics:** `verilog` `hdl` `digital-design` `fpga` `alu` `uart` `cpu`
