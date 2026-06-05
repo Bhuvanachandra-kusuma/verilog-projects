@@ -56,3 +56,16 @@ make clean    # remove sim/ artifacts
         op[2:0] ─┘              ──► overflow
                                  ──► negative
 ```
+
+## Simulation Results
+
+All 19 test cases pass across all 8 operations.
+
+### Terminal Output
+See full log: [docs/simulation_log.txt](./docs/simulation_log.txt)
+
+### Waveform
+![GTKWave simulation waveform](./docs/waveform.png)
+
+Each segment corresponds to one test case. Signals A, B, op, and result 
+change every 10ns as the testbench cycles through all 8 operations.
