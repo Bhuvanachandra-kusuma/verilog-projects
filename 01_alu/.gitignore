@@ -1,0 +1,13 @@
+# Simulation outputs
+sim/
+*.vcd
+*.lxt
+*.fst
+
+# Compiled objects
+*.o
+*.out
+
+# OS
+.DS_Store
+Thumbs.db

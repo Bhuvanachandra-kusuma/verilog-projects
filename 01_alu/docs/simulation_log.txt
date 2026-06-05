@@ -1,0 +1,28 @@
+iverilog -o sim/alu_tb tb/alu_tb.v src/alu.v
+vvp sim/alu_tb
+VCD info: dumpfile sim/alu_wave.vcd opened for output.
+=== 4-bit ALU Testbench ===
+op      A      B    | result z c ov n
+----------------------------------------------
+PASS | op=000 A=0011 B=0100 | result=0111 z=0 c=0 ov=0 n=0
+PASS | op=000 A=0111 B=1001 | result=0000 z=1 c=1 ov=0 n=0
+PASS | op=000 A=0111 B=0001 | result=1000 z=0 c=0 ov=1 n=1
+PASS | op=001 A=1001 B=0100 | result=0101 z=0 c=0 ov=1 n=0
+PASS | op=001 A=0100 B=1001 | result=1011 z=0 c=1 ov=1 n=1
+PASS | op=001 A=0000 B=0000 | result=0000 z=1 c=0 ov=0 n=0
+PASS | op=001 A=0101 B=0011 | result=0010 z=0 c=0 ov=0 n=0
+PASS | op=010 A=1100 B=1010 | result=1000 z=0 c=0 ov=0 n=1
+PASS | op=010 A=1111 B=0000 | result=0000 z=1 c=0 ov=0 n=0
+PASS | op=011 A=1100 B=0011 | result=1111 z=0 c=0 ov=0 n=1
+PASS | op=011 A=0000 B=0000 | result=0000 z=1 c=0 ov=0 n=0
+PASS | op=100 A=1010 B=1010 | result=0000 z=1 c=0 ov=0 n=0
+PASS | op=100 A=1100 B=0110 | result=1010 z=0 c=0 ov=0 n=1
+PASS | op=101 A=1010 B=xxxx | result=0101 z=0 c=0 ov=0 n=0
+PASS | op=101 A=0000 B=xxxx | result=1111 z=0 c=0 ov=0 n=1
+PASS | op=110 A=0011 B=xxxx | result=0110 z=0 c=0 ov=0 n=0
+PASS | op=110 A=1001 B=xxxx | result=0010 z=0 c=1 ov=0 n=0
+PASS | op=111 A=1100 B=xxxx | result=0110 z=0 c=0 ov=0 n=0
+PASS | op=111 A=0001 B=xxxx | result=0000 z=1 c=1 ov=0 n=0
+----------------------------------------------
+=== Simulation complete ===
+tb/alu_tb.v:103: $finish called at 190000 (1ps)
